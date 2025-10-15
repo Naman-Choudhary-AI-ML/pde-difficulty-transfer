@@ -116,8 +116,8 @@
                     Mixing in easy and medium difficulty data dramatically improves performance on hard examples while reducing data generation costs.
                 </p>
                 <div class="figure">
-                    <img src="assets/images/alpha_mixing_changing_physics_regular_baselines.pdf" alt="Alpha mixing for physics difficulty - FPO">
-                    <img src="assets/images/alpha_mixing_changing_physics_regular_baselines_LDC.pdf" alt="Alpha mixing for physics difficulty - LDC">
+                    <img src="assets/images/alpha_mixing_changing_physics_regular_baselines.png" alt="Alpha mixing for physics difficulty - FPO">
+                    <img src="assets/images/alpha_mixing_changing_physics_regular_baselines_LDC.png" alt="Alpha mixing for physics difficulty - LDC">
                 </div>
                 <div class="figure-caption">
                     <strong>Figure:</strong> Performance on hard (high Reynolds number) examples while varying data composition.
@@ -195,8 +195,8 @@
                     For Poseidon-B fine-tuned on hard FPO data, replacing 90% of the hard examples with easier ones reduces data generation time by 8.9× while maintaining similar accuracy.
                 </p>
                 <div class="figure">
-                    <img src="assets/images/alpha_mixing_changing_physics_baselines.pdf" alt="Physics mixing - baselines">
-                    <img src="assets/images/alpha_mixing_changing_physics_poseidon.pdf" alt="Physics mixing - Poseidon">
+                    <img src="assets/images/alpha_mixing_changing_physics_baselines.png" alt="Physics mixing - baselines">
+                    <img src="assets/images/alpha_mixing_changing_physics_poseidon.png" alt="Physics mixing - Poseidon">
                 </div>
                 <div class="figure-caption">
                     <strong>Figure:</strong> Performance on multi-obstacle FPO with varying physics difficulty mixing. Left: CNO and FFNO. Right: Poseidon variants.
@@ -207,8 +207,8 @@
                     The benefits of difficulty mixing extend to geometric complexity. Training on mixtures of simple and complex geometries improves generalization to complex multi-obstacle configurations.
                 </p>
                 <div class="figure">
-                    <img src="assets/images/alpha_mixing_changing_geometry_baselines.pdf" alt="Geometry mixing - baselines">
-                    <img src="assets/images/alpha_mixing_changing_geometry_poseidon.pdf" alt="Geometry mixing - Poseidon">
+                    <img src="assets/images/alpha_mixing_changing_geometry_baselines.png" alt="Geometry mixing - baselines">
+                    <img src="assets/images/alpha_mixing_changing_geometry_poseidon.png" alt="Geometry mixing - Poseidon">
                 </div>
                 <div class="figure-caption">
                     <strong>Figure:</strong> Performance on multi-obstacle examples with varying geometry difficulty mixing. Including simpler geometries improves performance on complex configurations.
@@ -219,8 +219,8 @@
                     When varying both physics and geometry difficulty simultaneously, the benefits of mixed-difficulty training compound, demonstrating the generality of the approach.
                 </p>
                 <div class="figure">
-                    <img src="assets/images/alpha_mixing_changing_physics_geometry_baselines.pdf" alt="Combined mixing - baselines">
-                    <img src="assets/images/alpha_mixing_changing_physics_geometry_poseidon_CORRECTED_v2.pdf" alt="Combined mixing - Poseidon">
+                    <img src="assets/images/alpha_mixing_changing_physics_geometry_baselines.png" alt="Combined mixing - baselines">
+                    <img src="assets/images/alpha_mixing_changing_physics_geometry_poseidon_CORRECTED_v2.png" alt="Combined mixing - Poseidon">
                 </div>
                 <div class="figure-caption">
                     <strong>Figure:</strong> Performance with both physics and geometry difficulty varying. The benefits of difficulty transfer hold across multiple axes simultaneously.
@@ -231,8 +231,8 @@
                     Medium difficulty data is more sample-efficient than easy data. For most pre-generation budgets, training on fewer medium-difficulty examples outperforms training on more easy examples.
                 </p>
                 <div class="figure">
-                    <img src="assets/images/scaling_changing_physics_baselines.pdf" alt="Physics scaling - baselines">
-                    <img src="assets/images/scaling_changing_physics_poseidonB.pdf" alt="Physics scaling - Poseidon">
+                    <img src="assets/images/scaling_changing_physics_baselines.png" alt="Physics scaling - baselines">
+                    <img src="assets/images/scaling_changing_physics_poseidonB.png" alt="Physics scaling - Poseidon">
                 </div>
                 <div class="figure-caption">
                     <strong>Figure:</strong> Scaling behavior with fixed compute budget. Medium difficulty examples are more efficient than easy ones for achieving target performance on hard distributions.
@@ -429,8 +429,7 @@ cd Poseidon_mixing_Exp
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Carnegie Mellon University. All rights reserved.</p>
-            <p>Contact: <a href="mailto:namanchoud@andrew.cmu.edu">namanchoud@andrew.cmu.edu</a></p>
+            <p>Contact: <a href="mailto:namancho@andrew.cmu.edu">namancho@andrew.cmu.edu</a></p>
         </div>
     </footer>
 
