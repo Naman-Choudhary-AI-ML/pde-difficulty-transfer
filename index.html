@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pre-Generating Multi-Difficulty PDE Data For Few-Shot Neural PDE Solvers - Achieve 8.9× compute reduction in neural PDE solver training by strategically pre-generating multi-difficulty data">
+    <meta name="keywords" content="neural PDE solvers, machine learning, computational science, Navier-Stokes, neural operators, few-shot learning, difficulty transfer">
+    <meta name="author" content="Naman Choudhary, Vedant Singh, Carnegie Mellon University">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Pre-Generating Multi-Difficulty PDE Data For Few-Shot Neural PDE Solvers">
+    <meta property="og:description" content="Achieve 8.9× compute reduction by strategically pre-generating multi-difficulty data for neural PDE solvers">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://naman-choudhary-ai-ml.github.io/pde-difficulty-transfer/">
+
+    <title>Pre-Generating Multi-Difficulty PDE Data For Few-Shot Neural PDE Solvers</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">PDE Difficulty Transfer</a>
+            <div class="nav-links">
+                <a href="#abstract">Abstract</a>
+                <a href="#key-insight">Key Insight</a>
+                <a href="#problem">Problem</a>
+                <a href="#results">Results</a>
+                <a href="#dataset">Dataset</a>
+                <a href="#code">Code</a>
+                <a href="#citation">Citation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="title">Pre-Generating Multi-Difficulty PDE Data<br>For Few-Shot Neural PDE Solvers</h1>
+
+            <div class="authors">
+                <a href="https://naman-choudhary-ai-ml.github.io/" class="author" target="_blank">Naman Choudhary*</a>
+                <a href="#" class="author">Vedant Singh*</a>
+                <a href="#" class="author">Ameet Talwalkar</a>
+                <a href="#" class="author">Nicholas Matthew Boffi</a>
+                <a href="#" class="author">Mikhail Khodak</a>
+                <a href="#" class="author">Tanya Marwah</a>
+            </div>
+
+            <div class="affiliation">
+                Machine Learning Department, Carnegie Mellon University
+            </div>
+
+            <div class="equal-contribution">
+                *Equal contribution. Author order determined alphabetically.
+            </div>
+
+            <div class="impact-statement">
+                Achieve <span class="highlight">8.9× compute reduction</span> in neural PDE solver training by strategically pre-generating multi-difficulty data
+            </div>
+
+            <div class="buttons">
+                <a href="#" class="btn btn-primary disabled" title="Coming soon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    Paper (Coming Soon)
+                </a>
+                <a href="https://github.com/Naman-Choudhary-AI-ML/Geo-UPSplus" class="btn btn-secondary" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    Code
+                </a>
+                <a href="#dataset" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                    Dataset (Coming Soon)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Abstract Section -->
+    <section id="abstract" class="section">
+        <div class="container">
+            <h2 class="section-title">Abstract</h2>
+            <div class="abstract-content">
+                <p>
+                    A key aspect of learned partial differential equation (PDE) solvers is that the main cost often comes from <em>generating</em> training data with classical solvers rather than learning the model itself.
+                    Another is that there are clear <em>axes of difficulty</em>—e.g., more complex geometries and higher Reynolds numbers—along which problems become (1) harder for classical solvers and thus (2) more likely to benefit from neural speedups.
+                    Towards addressing this chicken-and-egg challenge, we study <em>difficulty transfer</em> on 2D incompressible Navier-Stokes, systematically varying task complexity along geometry (number and placement of obstacles), physics (Reynolds number), and their combination.
+                </p>
+                <p>
+                    Similar to how it is possible to spend compute to <em>pre-train</em> foundation models and improve their performance on downstream tasks, we find that by classically solving (analogously <em>pre-generating</em>) many low and medium difficulty examples and including them in the training set, it is possible to learn high-difficulty physics from far fewer samples.
+                    Furthermore, we show that by combining low and high difficulty data, we can spend <span class="highlight">8.9× less compute</span> on pre-generating a dataset to achieve the same error as using only high difficulty examples.
+                    Our results highlight that <em>how</em> we allocate classical-solver compute across difficulty levels is as important as <em>how much</em> we allocate overall, and suggest substantial gains from principled curation of pre-generated PDE data for neural solvers.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Insight Section -->
+    <section id="key-insight" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Key Insight</h2>
+            <div class="insight-content">
+                <p class="insight-text">
+                    <strong>Just a small fraction of lower difficulty examples recovers most performance</strong> when training neural PDE solvers.
+                    Mixing in easy and medium difficulty data dramatically improves performance on hard examples while reducing data generation costs.
+                </p>
+                <div class="figure">
+                    <img src="assets/images/alpha_mixing_changing_physics_regular_baselines.pdf" alt="Alpha mixing for physics difficulty - FPO">
+                    <img src="assets/images/alpha_mixing_changing_physics_regular_baselines_LDC.pdf" alt="Alpha mixing for physics difficulty - LDC">
+                </div>
+                <div class="figure-caption">
+                    <strong>Figure:</strong> Performance on hard (high Reynolds number) examples while varying data composition.
+                    We fix the total number of training examples to 800 and vary the fraction consisting of high Re examples.
+                    Adding lower-difficulty examples substantially improves performance while reducing expensive data generation.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Setup Section -->
+    <section id="problem" class="section">
+        <div class="container">
+            <h2 class="section-title">Problem Setup</h2>
+
+            <div class="problem-content">
+                <h3>The Chicken-and-Egg Challenge</h3>
+                <p>
+                    Neural PDE solvers promise to accelerate classical numerical methods, but require training data generated by those same classical solvers.
+                    This creates a fundamental challenge: the hardest problems we want to solve are exactly those for which it's most expensive to generate training data.
+                </p>
+
+                <h3>Difficulty Axes</h3>
+                <p>
+                    We identify two primary axes along which PDE problems become more difficult:
+                </p>
+                <div class="difficulty-axes">
+                    <div class="axis">
+                        <h4>Geometry Complexity</h4>
+                        <p>Number and placement of obstacles in the flow domain</p>
+                        <ul>
+                            <li><strong>Easy:</strong> No obstacles (regular channel/cavity)</li>
+                            <li><strong>Medium:</strong> Single obstacle</li>
+                            <li><strong>Hard:</strong> Multiple obstacles with complex arrangements</li>
+                        </ul>
+                    </div>
+                    <div class="axis">
+                        <h4>Physics Complexity</h4>
+                        <p>Reynolds number (Re) - ratio of inertial to viscous forces</p>
+                        <ul>
+                            <li><strong>Easy:</strong> Re ∈ [100, 1000] - laminar flow</li>
+                            <li><strong>Medium:</strong> Re ∈ [2000, 4000] - transitional</li>
+                            <li><strong>Hard:</strong> Re ∈ [8000, 10000] - turbulent</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="figure">
+                    <img src="assets/images/FPO_CG.png" alt="Geometry complexity example">
+                    <img src="assets/images/FPO_CP.png" alt="Physics complexity example">
+                </div>
+                <div class="figure-caption">
+                    <strong>Figure:</strong> Visualizations showing increasing geometry complexity (left) and physics complexity via Reynolds number (right) in Flow Past Object (FPO) simulations.
+                </div>
+
+                <h3>Problem Families</h3>
+                <p>We study two canonical incompressible Navier-Stokes problem types:</p>
+                <ul>
+                    <li><strong>Flow Past Object (FPO):</strong> External flow around obstacles in a channel</li>
+                    <li><strong>Lid-Driven Cavity (LDC):</strong> Cavity flow with moving top wall</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Results Section -->
+    <section id="results" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Main Results</h2>
+
+            <div class="results-content">
+                <h3>1. Mixing Lower Difficulty Data Works</h3>
+                <p>
+                    Adding easy-to-medium difficulty data substantially improves performance on hard distributions.
+                    For Poseidon-B fine-tuned on hard FPO data, replacing 90% of the hard examples with easier ones reduces data generation time by 8.9× while maintaining similar accuracy.
+                </p>
+                <div class="figure">
+                    <img src="assets/images/alpha_mixing_changing_physics_baselines.pdf" alt="Physics mixing - baselines">
+                    <img src="assets/images/alpha_mixing_changing_physics_poseidon.pdf" alt="Physics mixing - Poseidon">
+                </div>
+                <div class="figure-caption">
+                    <strong>Figure:</strong> Performance on multi-obstacle FPO with varying physics difficulty mixing. Left: CNO and FFNO. Right: Poseidon variants.
+                </div>
+
+                <h3>2. Geometry Difficulty Transfer</h3>
+                <p>
+                    The benefits of difficulty mixing extend to geometric complexity. Training on mixtures of simple and complex geometries improves generalization to complex multi-obstacle configurations.
+                </p>
+                <div class="figure">
+                    <img src="assets/images/alpha_mixing_changing_geometry_baselines.pdf" alt="Geometry mixing - baselines">
+                    <img src="assets/images/alpha_mixing_changing_geometry_poseidon.pdf" alt="Geometry mixing - Poseidon">
+                </div>
+                <div class="figure-caption">
+                    <strong>Figure:</strong> Performance on multi-obstacle examples with varying geometry difficulty mixing. Including simpler geometries improves performance on complex configurations.
+                </div>
+
+                <h3>3. Combined Physics and Geometry Difficulty</h3>
+                <p>
+                    When varying both physics and geometry difficulty simultaneously, the benefits of mixed-difficulty training compound, demonstrating the generality of the approach.
+                </p>
+                <div class="figure">
+                    <img src="assets/images/alpha_mixing_changing_physics_geometry_baselines.pdf" alt="Combined mixing - baselines">
+                    <img src="assets/images/alpha_mixing_changing_physics_geometry_poseidon_CORRECTED_v2.pdf" alt="Combined mixing - Poseidon">
+                </div>
+                <div class="figure-caption">
+                    <strong>Figure:</strong> Performance with both physics and geometry difficulty varying. The benefits of difficulty transfer hold across multiple axes simultaneously.
+                </div>
+
+                <h3>4. Data Scaling Laws</h3>
+                <p>
+                    Medium difficulty data is more sample-efficient than easy data. For most pre-generation budgets, training on fewer medium-difficulty examples outperforms training on more easy examples.
+                </p>
+                <div class="figure">
+                    <img src="assets/images/scaling_changing_physics_baselines.pdf" alt="Physics scaling - baselines">
+                    <img src="assets/images/scaling_changing_physics_poseidonB.pdf" alt="Physics scaling - Poseidon">
+                </div>
+                <div class="figure-caption">
+                    <strong>Figure:</strong> Scaling behavior with fixed compute budget. Medium difficulty examples are more efficient than easy ones for achieving target performance on hard distributions.
+                </div>
+
+                <h3>5. Simulation Cost Analysis</h3>
+                <p>
+                    Classical solver costs increase dramatically with difficulty, making strategic data curation essential for efficient neural PDE solver training.
+                </p>
+                <div class="figure">
+                    <img src="assets/images/FPO_Simulation_Cost.png" alt="Simulation cost comparison">
+                </div>
+                <div class="figure-caption">
+                    <strong>Figure:</strong> Simulation times for different difficulty levels. High-difficulty examples can be 10× more expensive to generate, motivating careful data composition strategies.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dataset Section -->
+    <section id="dataset" class="section">
+        <div class="container">
+            <h2 class="section-title">Dataset</h2>
+
+            <div class="dataset-content">
+                <div class="coming-soon-badge">Expected Release: November 2025</div>
+
+                <p>
+                    We are releasing a comprehensive dataset of 2D incompressible Navier-Stokes simulations with systematic variation across difficulty axes.
+                    The dataset will enable research on few-shot learning, transfer learning, and foundation models for neural PDE solvers.
+                </p>
+
+                <h3>Dataset Overview</h3>
+                <div class="dataset-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Problem Families</div>
+                        <div class="stat-desc">Flow Past Object (FPO) & Lid-Driven Cavity (LDC)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">3×3</div>
+                        <div class="stat-label">Difficulty Levels</div>
+                        <div class="stat-desc">Easy, Medium, Hard across Geometry & Physics</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">1000s</div>
+                        <div class="stat-label">Simulations</div>
+                        <div class="stat-desc">Diverse initial conditions and configurations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">128×128</div>
+                        <div class="stat-label">Resolution</div>
+                        <div class="stat-desc">High-fidelity spatial discretization</div>
+                    </div>
+                </div>
+
+                <h3>Data Generation</h3>
+                <p>
+                    All simulations were generated using OpenFOAM, a leading open-source CFD toolkit. Our preprocessing pipeline includes:
+                </p>
+                <ul>
+                    <li>NURBS-based obstacle generation for smooth, varied geometries</li>
+                    <li>Signed distance field (SDF) computation for obstacle representation</li>
+                    <li>Physical channel extraction (velocity, pressure, vorticity)</li>
+                    <li>Temporal trajectory recording with 50+ timesteps per simulation</li>
+                </ul>
+
+                <div class="figure">
+                    <img src="assets/images/FPO_physical_channels.png" alt="Physical channels visualization">
+                </div>
+                <div class="figure-caption">
+                    <strong>Figure:</strong> Example physical channels from our dataset: velocity components, pressure, and vorticity fields with geometry mask and SDF.
+                </div>
+
+                <h3>Data Format</h3>
+                <p>
+                    The dataset will be released in HDF5 format with the following structure:
+                </p>
+                <ul>
+                    <li><strong>Input channels:</strong> Initial velocity (u, v), pressure, geometry mask, SDF</li>
+                    <li><strong>Output channels:</strong> Velocity evolution (u, v), pressure evolution</li>
+                    <li><strong>Metadata:</strong> Reynolds number, obstacle configurations, boundary conditions</li>
+                    <li><strong>Splits:</strong> Pre-defined train/validation/test splits for reproducibility</li>
+                </ul>
+
+                <div class="dataset-note">
+                    <strong>Stay tuned!</strong> We will update this page with download links, documentation, and example code once the dataset is released.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Section -->
+    <section id="code" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Code</h2>
+
+            <div class="code-content">
+                <p>
+                    Our implementation includes code for dataset generation, model training, and evaluation across all experiments reported in the paper.
+                </p>
+
+                <div class="code-repo">
+                    <a href="https://github.com/Naman-Choudhary-AI-ML/Geo-UPSplus" target="_blank" class="repo-link">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <div>
+                            <div class="repo-name">Geo-UPSplus</div>
+                            <div class="repo-desc">Official implementation repository</div>
+                        </div>
+                    </a>
+                </div>
+
+                <h3>Repository Structure</h3>
+                <ul>
+                    <li><strong>dataset_gen/</strong> - OpenFOAM simulation setup and data generation pipelines</li>
+                    <li><strong>CNO_Experiments/</strong> - Training and evaluation code for Convolutional Neural Operator</li>
+                    <li><strong>Poseidon_mixing_Exp/</strong> - Fine-tuning experiments with Poseidon foundation models</li>
+                </ul>
+
+                <h3>Models Supported</h3>
+                <ul>
+                    <li><strong>CNO (Convolutional Neural Operator)</strong> - Time-dependent CNO with conditional normalization</li>
+                    <li><strong>FFNO (Factorized Fourier Neural Operator)</strong> - Efficient frequency-domain operator</li>
+                    <li><strong>Poseidon Family</strong> - Integration with pre-trained foundation models (Tiny/Base/Large)</li>
+                </ul>
+
+                <h3>Quick Start</h3>
+                <div class="code-block">
+                    <pre><code># Clone the repository
+git clone https://github.com/Naman-Choudhary-AI-ML/Geo-UPSplus.git
+cd Geo-UPSplus
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Train CNO on mixed-difficulty data
+cd CNO_Experiments
+python TrainCNO_time_L.py --which_example fpo_mixing --alpha 0.5
+
+# Fine-tune Poseidon
+cd Poseidon_mixing_Exp
+./scOT/mixing_poseidon.sh</code></pre>
+                </div>
+
+                <p>
+                    For detailed instructions, please refer to the repository README and documentation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citation Section -->
+    <section id="citation" class="section">
+        <div class="container">
+            <h2 class="section-title">Citation</h2>
+
+            <div class="citation-content">
+                <p>If you find our work useful, please consider citing:</p>
+
+                <div class="bibtex-container">
+                    <button class="copy-btn" onclick="copyBibtex()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy BibTeX
+                    </button>
+                    <pre id="bibtex-code"><code>@article{choudhary2025pde,
+  title={Pre-Generating Multi-Difficulty PDE Data For Few-Shot Neural PDE Solvers},
+  author={Choudhary, Naman and Singh, Vedant and Talwalkar, Ameet and Boffi, Nicholas Matthew and Khodak, Mikhail and Marwah, Tanya},
+  journal={arXiv preprint},
+  year={2025}
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acknowledgments Section -->
+    <section id="acknowledgments" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Acknowledgments</h2>
+            <div class="acknowledgments-content">
+                <p>
+                    This research was conducted at Carnegie Mellon University's Machine Learning Department.
+                    We thank the CMU computing resources and the broader scientific machine learning community for their support and feedback.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Carnegie Mellon University. All rights reserved.</p>
+            <p>Contact: <a href="mailto:namanchoud@andrew.cmu.edu">namanchoud@andrew.cmu.edu</a></p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
