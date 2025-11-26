@@ -31,7 +31,6 @@
                 <a href="#problem">Problem</a>
                 <a href="#results">Results</a>
                 <a href="#dataset">Dataset</a>
-                <a href="#code">Code</a>
                 <a href="#citation">Citation</a>
             </div>
         </div>
@@ -71,17 +70,17 @@
                     </svg>
                     Paper (Coming Soon)
                 </a>
-                <a href="https://github.com/Naman-Choudhary-AI-ML/Geo-UPSplus" class="btn btn-secondary" target="_blank">
+                <a href="https://github.com/Naman-Choudhary-AI-ML/pregenerating-pde" class="btn btn-secondary" target="_blank">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
                     Code
                 </a>
-                <a href="#dataset" class="btn btn-secondary">
+                <a href="https://huggingface.co/datasets/sage-lab/PreGen-NavierStokes-2D" class="btn btn-secondary" target="_blank">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                     </svg>
-                    Dataset (Coming Soon)
+                    Dataset
                 </a>
             </div>
         </div>
@@ -258,11 +257,10 @@
             <h2 class="section-title">Dataset</h2>
 
             <div class="dataset-content">
-                <div class="coming-soon-badge">Expected Release: November 2025</div>
-
                 <p>
                     We are releasing a comprehensive dataset of 2D incompressible Navier-Stokes simulations with systematic variation across difficulty axes.
-                    The dataset will enable research on few-shot learning, transfer learning, and foundation models for neural PDE solvers.
+                    Access the dataset on <a href="https://huggingface.co/datasets/sage-lab/PreGen-NavierStokes-2D" target="_blank" style="color: #0066cc; text-decoration: underline;">Hugging Face</a>.
+                    The dataset enables research on few-shot learning, transfer learning, and foundation models for neural PDE solvers.
                 </p>
 
                 <h3>Dataset Overview</h3>
@@ -301,7 +299,7 @@
                 </ul>
 
                 <div class="figure">
-                    <img src="assets/images/FPO_physical_channels.png" alt="Physical channels visualization">
+                    <img src="assets/images/FPO_physical_channels.png" alt="Physical channels visualization" style="max-width: 500px;">
                 </div>
                 <div class="figure-caption">
                     <strong>Figure:</strong> Example physical channels from our dataset: velocity components, pressure, and vorticity fields with geometry mask and SDF.
@@ -309,7 +307,7 @@
 
                 <h3>Data Format</h3>
                 <p>
-                    The dataset will be released in HDF5 format with the following structure:
+                    The dataset is provided in HDF5 format with the following structure:
                 </p>
                 <ul>
                     <li><strong>Input channels:</strong> Initial velocity (u, v), pressure, geometry mask, SDF</li>
@@ -317,71 +315,6 @@
                     <li><strong>Metadata:</strong> Reynolds number, obstacle configurations, boundary conditions</li>
                     <li><strong>Splits:</strong> Pre-defined train/validation/test splits for reproducibility</li>
                 </ul>
-
-                <div class="dataset-note">
-                    <strong>Stay tuned!</strong> We will update this page with download links, documentation, and example code once the dataset is released.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Code Section -->
-    <section id="code" class="section section-gray">
-        <div class="container">
-            <h2 class="section-title">Code</h2>
-
-            <div class="code-content">
-                <p>
-                    Our implementation includes code for dataset generation, model training, and evaluation across all experiments reported in the paper.
-                </p>
-
-                <div class="code-repo">
-                    <a href="https://github.com/Naman-Choudhary-AI-ML/Geo-UPSplus" target="_blank" class="repo-link">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        <div>
-                            <div class="repo-name">Geo-UPSplus</div>
-                            <div class="repo-desc">Official implementation repository</div>
-                        </div>
-                    </a>
-                </div>
-
-                <h3>Repository Structure</h3>
-                <ul>
-                    <li><strong>dataset_gen/</strong> - OpenFOAM simulation setup and data generation pipelines</li>
-                    <li><strong>CNO_Experiments/</strong> - Training and evaluation code for Convolutional Neural Operator</li>
-                    <li><strong>Poseidon_mixing_Exp/</strong> - Fine-tuning experiments with Poseidon foundation models</li>
-                </ul>
-
-                <h3>Models Supported</h3>
-                <ul>
-                    <li><strong>CNO (Convolutional Neural Operator)</strong> - Time-dependent CNO with conditional normalization</li>
-                    <li><strong>FFNO (Factorized Fourier Neural Operator)</strong> - Efficient frequency-domain operator</li>
-                    <li><strong>Poseidon Family</strong> - Integration with pre-trained foundation models (Tiny/Base/Large)</li>
-                </ul>
-
-                <h3>Quick Start</h3>
-                <div class="code-block">
-                    <pre><code># Clone the repository
-git clone https://github.com/Naman-Choudhary-AI-ML/Geo-UPSplus.git
-cd Geo-UPSplus
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Train CNO on mixed-difficulty data
-cd CNO_Experiments
-python TrainCNO_time_L.py --which_example fpo_mixing --alpha 0.5
-
-# Fine-tune Poseidon
-cd Poseidon_mixing_Exp
-./scOT/mixing_poseidon.sh</code></pre>
-                </div>
-
-                <p>
-                    For detailed instructions, please refer to the repository README and documentation.
-                </p>
             </div>
         </div>
     </section>
@@ -402,7 +335,7 @@ cd Poseidon_mixing_Exp
                         </svg>
                         Copy BibTeX
                     </button>
-                    <pre id="bibtex-code"><code>@article{choudhary2025pde,
+                    <pre id="bibtex-code"><code>@article{pregen2025,
   title={Pre-Generating Multi-Difficulty PDE Data For Few-Shot Neural PDE Solvers},
   author={Choudhary, Naman and Singh, Vedant and Talwalkar, Ameet and Boffi, Nicholas Matthew and Khodak, Mikhail and Marwah, Tanya},
   journal={arXiv preprint},
@@ -429,7 +362,11 @@ cd Poseidon_mixing_Exp
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>Contact: <a href="mailto:namancho@andrew.cmu.edu">namancho@andrew.cmu.edu</a></p>
+            <p>
+                Contact:
+                <a href="mailto:namanchoudharyimp@gmail.com">Naman Choudhary (namanchoudharyimp@gmail.com)</a> |
+                <a href="mailto:vhsingh@andrew.cmu.edu">Vedant Singh (vhsingh@andrew.cmu.edu)</a>
+            </p>
         </div>
     </footer>
 
