@@ -423,6 +423,14 @@ code {
 /* ========================================
    Dataset Section
    ======================================== */
+#dataset {
+    padding-bottom: 40px;
+}
+
+#citation {
+    padding-top: 40px;
+}
+
 .coming-soon-badge {
     display: inline-block;
     background-color: var(--accent-yellow);
